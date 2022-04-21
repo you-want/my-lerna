@@ -1,0 +1,55 @@
+{
+  "name": "you-want-lerna",
+  "version": "1.0.0",
+  "description": " 类 lerna 的多项目管理工具",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node ./scripts/bootstrap/bootstrap.ts start",
+    "reinstall": "ts-node ./scripts/bootstrap/bootstrap.ts reinstall",
+    "install-link": "ts-node ./scripts/bootstrap/bootstrap.ts install-link",
+    "list": "ts-node ./scripts/bootstrap/bootstrap.ts list",
+    "npm-clear": "ts-node ./scripts/bootstrap/bootstrap.ts clear",
+    "dev": "ts-node ./scripts/bootstrap/bootstrap.ts dev",
+    "build": "ts-node ./scripts/bootstrap/bootstrap.ts build",
+    "publish": "ts-node ./scripts/bootstrap/bootstrap.ts publish",
+    "set-all-ver": "ts-node ./scripts/bootstrap/bootstrap.ts set-all-ver",
+    "use-lib-es": "ts-node ./scripts/bootstrap/bootstrap.ts use-lib-es",
+    "build-ts": "ts-node ./scripts/bootstrap/bootstrap.ts build-ts",
+    "use-lib-ts": "ts-node ./scripts/bootstrap/bootstrap.ts use-lib-ts",
+    "install-dep": "ts-node ./scripts/bootstrap/bootstrap.ts install-dep",
+    "serve": "ts-node ./scripts/bootstrap/bootstrap.ts serve",
+    "help": "ts-node ./scripts/bootstrap/bootstrap.ts help"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/you-want/you-want-lerna.git"
+  },
+  "keywords": [
+    "lerna"
+  ],
+  "author": "Rain9",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/you-want/you-want-lerna/issues"
+  },
+  "homepage": "https://github.com/you-want/you-want-lerna#readme",
+  "dependencies": {
+    "chalk": "^5.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "figlet": "^1.5.2",
+    "inquirer": "^8.2.2",
+    "ramda": "^0.28.0",
+    "rxjs": "^7.5.5",
+    "typescript": "^4.6.3",
+    "yargs-parser": "^21.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.25",
+    "@types/yargs-parser": "^21.0.0",
+    "autod": "^3.1.2",
+    "eslint": "^8.13.0",
+    "eslint-plugin-autofix": "^1.1.0",
+    "typescript-plugin-css-modules": "^3.4.0"
+  }
+}
