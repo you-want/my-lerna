@@ -4,6 +4,7 @@
   "description": " 类 lerna 的多项目管理工具",
   "main": "index.js",
   "scripts": {
+    "test-install": "ts-node ./scripts/demo/main.ts -- install",
     "start": "ts-node ./scripts/bootstrap/bootstrap.ts start",
     "reinstall": "ts-node ./scripts/bootstrap/bootstrap.ts reinstall",
     "install-link": "ts-node ./scripts/bootstrap/bootstrap.ts install-link",
