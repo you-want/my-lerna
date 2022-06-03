@@ -59,8 +59,8 @@ async function run() {
         break
       }
 
-      if(!name.match(/^@skedo/)) {
-        name = '@skedo/' + name
+      if(!name.match(/^@you-want/)) {
+        name = '@you-want/' + name
       }
 
       let pkg = projects.find(name)

@@ -9,7 +9,7 @@ interface PackageJSON{
 	name : string,
 	version : [number, number, number],
 	main : string,
-	skedo? : {
+	youWant? : {
 		devLinks? : string[],
 		type? : "service" | "app" | "lib" | "cli",
 		port? : number,
@@ -52,7 +52,7 @@ export class Package{
 	}
 
 	public isRunnable() {
-		return ['app', 'service'].indexOf(this.getSkedoType()) !== -1
+		return ['app', 'service'].indexOf(this.getYouWantType()) !== -1
 	}
 
 	public setVer(ver : [number, number, number]) {
@@ -64,12 +64,12 @@ export class Package{
 		return this.json.version
 	}
 
-	public getSkedoType(){
-		return this.json.skedo?.type
+	public getYouWantType(){
+		return this.json.youWant?.type
 	}
 
 	public getDevLinks(){
-		return (this.json.skedo?.devLinks) || []
+		return (this.json.youWant?.devLinks) || []
 	}
 
 	public async publish(type : "major" | "minor" | "hotfix"){
@@ -128,7 +128,7 @@ export class Package{
 
 	public async link(){
 		console.log(chalk.cyanBright(`link ${this.getName()}`))
-		if(this.getSkedoType() !== 'cli') {
+		if(this.getYouWantType() !== 'cli') {
 			await this.exec('yarn unlink')
 			await this.exec('yarn link')
 		} else {
@@ -173,8 +173,8 @@ export class Package{
 	}
 
 	public async runBootstrapScript(){
-		if(this.json.skedo?.bootstrap) {
-			await this.exec(`ts-node ${this.json.skedo.bootstrap}`)
+		if(this.json.youWant?.bootstrap) {
+			await this.exec(`ts-node ${this.json.youWant.bootstrap}`)
 		}
 	}
 
@@ -190,7 +190,7 @@ export class Package{
 
 	public async startDev(){
 
-		switch (this.getSkedoType()) {
+		switch (this.getYouWantType()) {
       case "app": {
 				const script = path.resolve(__dirname, './start-service.js')
 				await this.exec(
@@ -201,26 +201,26 @@ export class Package{
         break
 			}
       case "service": {
-				if(!this.json.skedo?.port) {
-					console.error(chalk.red(`you should specify port number in your package.json with skedo.port=xxx.`))
+				if(!this.json.youWant?.port) {
+					console.error(chalk.red(`you should specify port number in your package.json with youWant.port=xxx.`))
 					break
 				}
 				const script = path.resolve(__dirname, './start-service.js')
 				await this.exec(`pm2 start --name ${this.getName()} --exp-backoff-restart-delay=10000 ${script}`, true, {
-					PORT : this.json.skedo.port
+					PORT : this.json.youWant.port
 				})
 				await this.exec(`pm2 list`)
         break
 			}
       default:
-				console.error(chalk.red(`you cannot start an [${this.getSkedoType}] type package.`))
+				console.error(chalk.red(`you cannot start an [${this.getYouWantType}] type package.`))
 				break
     }
 		
 	}
 
 	public async buildES(){
-		if(["app", "cli"].indexOf( this.getSkedoType()) !== -1) {
+		if(["app", "cli"].indexOf( this.getYouWantType()) !== -1) {
 			return
 		}
 
@@ -252,7 +252,7 @@ export class Package{
 	}
 
 	public isLocalInstall(){
-		return this.json.skedo?.localInstall
+		return this.json.youWant?.localInstall
 	}
 
 	public async build(){

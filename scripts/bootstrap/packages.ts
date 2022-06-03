@@ -12,7 +12,7 @@ class Packages {
 	marks :any 
 
 	constructor(packages : Array<Package>){
-		this.packages = packages.filter((x) => ['service', 'app', 'lib', 'cli'].indexOf(x.getSkedoType()) !== -1)
+		this.packages = packages.filter((x) => ['service', 'app', 'lib', 'cli'].indexOf(x.getYouWantType()) !== -1)
 		this.package = new Package("package.json", path.resolve(__dirname, '../../')) 
 
 		// 版本号为最大的版本号
@@ -99,7 +99,7 @@ class Packages {
 	}
 
 	public switchLibsTo(type : 'es' | 'ts'){
-		this.packages.filter(x => x.getSkedoType() === "lib")
+		this.packages.filter(x => x.getYouWantType() === "lib")
 			.forEach(lib => {
 				if(type === 'es') {
 					lib.toES()
@@ -157,7 +157,7 @@ class Packages {
 			const deps = this.getDeps(name)
 			pkgs = this.packages.filter(x => deps.has(x.getName())) 
 		} else {
-			pkgs = this.packages.filter(x => x.getSkedoType() === 'lib') 
+			pkgs = this.packages.filter(x => x.getYouWantType() === 'lib') 
 		}
 
 
@@ -191,7 +191,7 @@ class Packages {
 			this.installLinks()
 		}
 
-		this.packages.filter(x => x.getSkedoType() === 'service' || x.getSkedoType() === "app")
+		this.packages.filter(x => x.getYouWantType() === 'service' || x.getYouWantType() === "app")
 			.forEach(x => x.startDev())
 
 	}
@@ -218,7 +218,7 @@ class Packages {
 	public listProjects(){
 		this.packages.forEach(pkg => {
 			console.log('<pkg ' + pkg.getName() + "@" + pkg.getVer().join('.') + '>') 
-			console.log('  type', pkg.getSkedoType())
+			console.log('  type', pkg.getYouWantType())
 			console.log('  name', pkg.getName())
 			console.log('  version', pkg.getVer().join('.'))
 			console.log('  links', pkg.getDevLinks().join(' '))
@@ -307,7 +307,7 @@ class Packages {
 
 	public loadMarks(){
 		try{
-			const content = fs.readFileSync(path.resolve(__dirname, "../../.skedo"), 'utf8')
+			const content = fs.readFileSync(path.resolve(__dirname, "../../.you-want"), 'utf8')
 			const json = JSON.parse(content)
 			this.marks = json
 		} catch(ex){
@@ -317,7 +317,7 @@ class Packages {
 	}
 
 	public saveMark() {
-		fs.writeFileSync(path.resolve(__dirname, "../../.skedo"), JSON.stringify(this.marks, null, 2), "utf-8")	
+		fs.writeFileSync(path.resolve(__dirname, "../../.you-want"), JSON.stringify(this.marks, null, 2), "utf-8")	
 	}
 
 	public install(){

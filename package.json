@@ -1,7 +1,7 @@
 {
-  "name": "you-want-lerna",
+  "name": "my-lerna",
   "version": "1.0.0",
-  "description": " 类 lerna 的多项目管理工具",
+  "description": "my-lerna 的多项目管理工具",
   "main": "index.js",
   "scripts": {
     "test-install": "ts-node ./scripts/demo/main.ts -- install",
@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/you-want/you-want-lerna.git"
+    "url": "git+https://github.com/you-want/my-lerna.git"
   },
   "keywords": [
     "lerna"
@@ -31,9 +31,9 @@
   "author": "Rain9",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/you-want/you-want-lerna/issues"
+    "url": "https://github.com/you-want/my-lerna/issues"
   },
-  "homepage": "https://github.com/you-want/you-want-lerna#readme",
+  "homepage": "https://github.com/you-want/my-lerna#readme",
   "dependencies": {
     "chalk": "^5.0.1",
     "cors": "^2.8.5",

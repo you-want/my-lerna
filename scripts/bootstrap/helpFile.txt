@@ -1,13 +1,13 @@
 
 Usage:  npm run COMMAND [Options]
 
-@skedo's project manager
+@you-want's project manager
 
 COMMANDS:
   dev           dev a specified package
   
     usage : npm run dev -- --name [name in package.json]
-    e.g.  : npm run dev -- --name=@skedo/service-upload
+    e.g.  : npm run dev -- --name=@you-want/service-upload
 
   reinstall     reinstall all packages and links them all.
   list          list all packages
